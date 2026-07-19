@@ -42,13 +42,13 @@
 
 ;; min-value
 
-(= (max-value (cons $x ()))
+(= (min-value (cons $x ()))
    $x)
 
-(= (max-value (cons $x $xs))
-   (if (> $x (max-value $xs))
+(= (min-value (cons $x $xs))
+   (if (< $x (min-value $xs))
        $x
-       (max-value $xs)))
+       (min-value $xs)))
 
 
 ;; Push
@@ -60,7 +60,7 @@
 ;; Pop
 
 (= (pop (cons $x $xs))
-   $xs)
+   ($x $xs))
 
 
 ;; Remove-element
@@ -136,16 +136,16 @@
 
 ;; Sort
 
-(= (insert $x ())
+(= (insert $cmp $x ())
    (cons $x ()))
 
-(= (insert $x (cons $y $ys))
-   (if (< $x $y)
+(= (insert $cmp $x (cons $y $ys))
+   (if ($cmp $x $y)
        (cons $x (cons $y $ys))
-       (cons $y (insert $x $ys))))
+       (cons $y (insert $cmp $x $ys))))
 
-(= (sort ())
+(= (sort $cmp ())
    ())
 
-(= (sort (cons $x $xs))
-   (insert $x (sort $xs)))
+(= (sort $cmp (cons $x $xs))
+   (insert $cmp $x (sort $cmp $xs)))

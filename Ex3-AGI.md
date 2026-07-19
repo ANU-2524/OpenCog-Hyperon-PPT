@@ -71,4 +71,4 @@ This resembles human cognition more closely.
 
 OpenCog Hyperon can be considered a framework for AGI because it combines symbolic reasoning, knowledge representation, adaptive learning, and neuro-symbolic intelligence into one architecture, enabling systems to move beyond narrow task-specific intelligence.
 
---- 
+---
